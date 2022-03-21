@@ -15,12 +15,12 @@ class MovieLoadingState extends MovieState {
 
 class MovieSuccessState extends MovieState {
 
-  MovieSuccessState(this.movies);
+  MovieSuccessState(this.movieItemModel);
 
-  final List<MovieModel> movies;
+  final MovieItemModel movieItemModel;
 
   @override
-  List<Object?> get props => [movies];
+  List<Object?> get props => [movieItemModel];
 }
 
 class MovieErrorState extends MovieState {

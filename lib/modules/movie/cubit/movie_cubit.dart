@@ -17,8 +17,9 @@ class MovieCubit extends Cubit<MovieState> {
   void _getTrendingMovies() async {
     try {
       emit(MovieLoadingState());
-      final movies = await movieRepository.findAll();
-      emit(MovieSuccessState(movies));
+      final movieModel = await movieRepository.findAll();
+
+      emit(MovieSuccessState(movieModel));
     } catch (e) {
       emit(MovieErrorState());
     }

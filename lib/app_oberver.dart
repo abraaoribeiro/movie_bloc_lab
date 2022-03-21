@@ -11,8 +11,7 @@ class MovieAppObserver extends BlocObserver {
   @override
   void onError(BlocBase bloc, Object error, StackTrace stackTrace) {
     super.onError(bloc, error, stackTrace);
-     print('${bloc.runtimeType} $error');
+     print('${bloc.runtimeType} $error, $stackTrace');
   }
-
   
 }

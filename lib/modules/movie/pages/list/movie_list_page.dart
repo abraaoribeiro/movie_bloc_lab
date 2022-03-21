@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_bloc_lab/modules/movie/cubit/movie.dart';
 
 class MovieListPage extends StatelessWidget {
-  const MovieListPage({ Key? key }) : super(key: key);
+  const MovieListPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -11,33 +11,35 @@ class MovieListPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Movies"),
       ),
-      body: BlocBuilder<MovieCubit, MovieState>(
-        builder: (context, state) {
-          if (state is MovieLoadingState) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          } else if(state is MovieErrorState){
-            return const Center(
-              child: Icon(Icons.close),
-            );
-          }else if(state is MovieSuccessState){
-            final movies = state.movies;
-            return ListView.builder(
-              itemCount: movies.length,
-              itemBuilder: (context, index) => Card(
+      body: BlocBuilder<MovieCubit, MovieState>(builder: (context, state) {
+        if (state is MovieLoadingState) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        } else if (state is MovieErrorState) {
+          return const Center(
+            child: Icon(Icons.close),
+          );
+        } else if (state is MovieSuccessState) {
+          return ListView.builder(
+            itemCount: state.movieItemModel.movies?.length,
+            itemBuilder: (context, index) {
+              final movie = state.movieItemModel.movies![index];
+              return Card(
                 child: ListTile(
-                  title: Text(movies[index].title),
+                  title: Text(movie.title.toString()),
                   leading: CircleAvatar(
-                    backgroundImage: NetworkImage(movies[index].urlImage),
+                    backgroundImage: NetworkImage(
+                      'https://image.tmdb.org/t/p/w185${movie.posterPath}',
+                    ),
                   ),
                 ),
-              ),
-            );
-          }
-          return Container();
+              );
+            },
+          );
         }
-      ),
+        return Container();
+      }),
     );
   }
 }
