@@ -1,38 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:movie_bloc_lab/modules/movie/model/movie_item_model.dart';
 
 class MovieDetailPage extends StatelessWidget {
-  final String posterUrl;
-  final String description;
-  final String releaseDate;
-  final String title;
-  final String voteAverage;
-  final int movieId;
+
+  final MovieModel movieModel;
 
   const MovieDetailPage({
     Key? key,
-    required this.posterUrl,
-    required this.description,
-    required this.releaseDate,
-    required this.title,
-    required this.voteAverage,
-    required this.movieId,
+    required this.movieModel,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text(movieModel.title.toString()),
       ),
       body: Column(
         children: [
           Container(
-            child: Image.network("https://image.tmdb.org/t/p/w500$posterUrl",
+            child: Image.network("https://image.tmdb.org/t/p/w500${movieModel.posterPath.toString()}",
               fit: BoxFit.cover,
             ),
           ),
           Text(
-            description,
+            movieModel.overview.toString(),
             style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
           )
         ],
