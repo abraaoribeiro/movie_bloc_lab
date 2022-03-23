@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie_bloc_lab/modules/movie/model/movie_item_model.dart';
 import 'package:movie_bloc_lab/modules/movie/pages/detail/movie_detail_page.dart';
-import 'package:movie_bloc_lab/modules/movie/pages/list/movie_list.dart';
+import 'package:movie_bloc_lab/modules/movie/pages/list/movie_list_cubit.dart';
 import 'package:movie_bloc_lab/modules/movie/pages/list/movie_list_page.dart';
 import 'package:movie_bloc_lab/modules/movie/repository/movie_repository/movie_repository_interface.dart';
 import 'package:movie_bloc_lab/shared/ErrorScreen.dart';

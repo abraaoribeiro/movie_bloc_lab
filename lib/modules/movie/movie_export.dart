@@ -1,0 +1,1 @@
+export 'pages/list/movie_list_cubit.dart';
