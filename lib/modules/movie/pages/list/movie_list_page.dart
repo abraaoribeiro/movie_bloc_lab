@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:movie_bloc_lab/modules/movie/cubit/movie.dart';
+
+import 'movie_list_cubit.dart';
 
 class MovieListPage extends StatelessWidget {
   const MovieListPage({Key? key}) : super(key: key);
@@ -12,16 +13,16 @@ class MovieListPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Movies"),
       ),
-      body: BlocBuilder<MovieCubit, MovieState>(builder: (context, state) {
-        if (state is MovieLoadingState) {
+      body: BlocBuilder<MovieListCubit, MovieListState>(builder: (context, state) {
+        if (state is MovieListLoadingState) {
           return const Center(
             child: CircularProgressIndicator(),
           );
-        } else if (state is MovieErrorState) {
+        } else if (state is MovieListErrorState) {
           return const Center(
             child: Icon(Icons.close),
           );
-        } else if (state is MovieSuccessState) {
+        } else if (state is MovieListSuccessState) {
           return ListView.builder(
             itemCount: state.movieItemModel.movies?.length,
             itemBuilder: (context, index) {
