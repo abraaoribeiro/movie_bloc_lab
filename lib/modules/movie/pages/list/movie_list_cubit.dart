@@ -12,7 +12,7 @@ class MovieListCubit extends Cubit<MovieListState> {
     _getTrendingMovies();
   }
 
-  final IMovieRepository movieRepository;
+  IMovieRepository movieRepository;
 
   void _getTrendingMovies() async {
     try {

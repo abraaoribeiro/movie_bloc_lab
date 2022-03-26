@@ -1,6 +1,3 @@
-
-import 'dart:convert';
-
 import 'package:movie_bloc_lab/modules/movie/model/movie_item_model.dart';
 import 'package:movie_bloc_lab/modules/movie/repository/movie_repository/movie_repository_interface.dart';
 import 'package:dio/dio.dart';
