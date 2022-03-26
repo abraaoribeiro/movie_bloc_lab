@@ -17,3 +17,11 @@ void configureDependencies() {
   getIt.registerLazySingleton(() => MovieListCubit(movieRepository: getIt<IMovieRepository>()));
 
 }
+
+
+void disponseModule(){
+  getIt<MovieListCubit>().close();
+  getIt.unregister<MovieListCubit>();
+  getIt.unregister<AppRouter>();
+  getIt.unregister<IMovieRepository>();
+}
